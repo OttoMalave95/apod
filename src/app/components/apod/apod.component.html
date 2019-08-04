@@ -1,0 +1,29 @@
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="18">
+    <nz-card *ngIf="!error" [nzBordered]="false" [nzCover]="coverTemplate"
+      [nzActions]="[actionSelect]"
+      [nzLoading]="!apod">
+      <nz-card-meta [nzTitle]="apod?.title" [nzDescription]="descriptionTemplate" [nzAvatar]="avatarTemplate">
+      </nz-card-meta>
+    </nz-card>
+    <ng-template #descriptionTemplate>
+      <p>{{ apod?.date | date:'fullDate' }}</p>
+      <p>{{ apod?.explanation }}</p>
+    </ng-template>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzSrc="https://images-na.ssl-images-amazon.com/images/I/6111kA98OPL.png"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+      <img *ngIf="apod" alt="pic_nasa" [src]="apod?.url" />
+    </ng-template>
+    <ng-template #actionSelect>
+      <a [href]="apod?.hdurl" target="_blank" rel="noopener noreferrer">
+        <i title="Ver Imágen" nz-icon nzType="select"></i>
+      </a>
+    </ng-template>
+
+    <nz-card *ngIf="error" [nzBordered]="false">
+      <nz-alert nzType="error" [nzMessage]="error" nzShowIcon></nz-alert>
+    </nz-card>
+  </div>
+</div>

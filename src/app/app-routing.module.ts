@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ApodComponent } from './components/apod/apod.component';
 
 const routes: Routes = [
-  // { path: '**', pathMatch: 'full', redirectTo: '' },
-  // { path: '', component: '' }
+  { path: '', component: ApodComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
 @NgModule({
